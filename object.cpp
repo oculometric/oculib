@@ -2,6 +2,29 @@
 
 #include "vector4.h"
 
+OLMatrix4f OLObject::getLocalTransform()
+{
+    OLMatrix4f translation
+    {
+        1.0f, 0.0f, 0.0f, local_position.x,
+        0.0f, 1.0f, 0.0f, local_position.y,
+        0.0f, 0.0f, 1.0f, local_position.z,
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+
+    OLMatrix4f rotation = toMatrix(local_rotation);
+
+    OLMatrix4f stretch
+    {
+        local_scale.x, 0.0f,          0.0f,          0.0f,
+        0.0f,          local_scale.y, 0.0f,          0.0f,
+        0.0f,          0.0f,          local_scale.z, 0.0f,
+        0.0f,          0.0f,          0.0f,          1.0f
+    };
+
+    return stretch * rotation * translation;
+}
+
 OLMatrix4f OLObject::objectMatrix(const OLVector3f& position, const OLVector3f& right, const OLVector3f& up, const OLVector3f& back, const OLVector3f& scale)
 {
     OLMatrix4f translation
@@ -28,6 +51,6 @@ OLMatrix4f OLObject::objectMatrix(const OLVector3f& position, const OLVector3f& 
         0.0f,    0.0f,    0.0f,    1.0f
     };
 
-    OLMatrix4f transform = translation * rotation * stretch;
+    OLMatrix4f transform = stretch * rotation * translation;
     return transform;
 }

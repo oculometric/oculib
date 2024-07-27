@@ -217,16 +217,42 @@ template <typename T>
 inline OLMatrix4<T> cofact(const OLMatrix4<T>& a) { return OLMatrix4<T>{ minor(a, 0), -minor(a, 1), minor(a, 2), -minor(a, 3), -minor(a, 4), minor(a, 5), -minor(a, 6), minor(a, 7), minor(a, 8), -minor(a, 9), minor(a, 10), -minor(a, 11), -minor(a, 12), minor(a, 13), -minor(a, 14), minor(a, 15) }; }
 
 /**
-    * calculate adjoint of a matrix
-    *
-    * - by finding the transpose of the matrix of cofactors of
-    * the input matrix
-    *
-    * @param a matrix on which to operate
-    *
-    * @return adjoint matrix of the input
-    * **/
+ * calculate adjoint of a matrix
+ *
+ * - by finding the transpose of the matrix of cofactors of
+ * the input matrix
+ *
+ * @param a matrix on which to operate
+ *
+ * @return adjoint matrix of the input
+ * **/
 template <typename T>
 inline OLMatrix4<T> adj(const OLMatrix4<T>& a) { return -cofact(a); }
 
 typedef OLMatrix4<float> OLMatrix4f;
+
+/**
+ * convert a quaternion (i.e. a vector4) to a rotation matrix. the input 
+ * quaternion must be normalised, and formatted as (x, y, z, r). sorry mathematicians
+ * 
+ * @param quat quaternion to use
+ * 
+ * @return matrix which represents the rotation described by the quaternion
+ * **/
+inline OLMatrix4f toMatrix(const OLVector4f& quat)
+{
+    float qi = quat.x; float qi2 = qi * qi;
+    float qj = quat.y; float qj2 = qj * qj;
+    float qk = quat.z; float qk2 = qk * qk;
+    float qr = quat.w;
+
+    OLMatrix4f rotation = OLMatrix4f
+    {
+        1 - (2 * (qj2 + qk2)),         2 * ((qi * qj) - (qk * qr)),   2 * ((qi * qk) + (qj * qr)),   0,
+        2 * ((qi * qj) + (qk * qr)),   1 - (2 * (qi2 + qk2)),         2 * ((qj * qk) - (qi * qr)),   0,
+        2 * ((qi * qk) - (qj * qr)),   2 * ((qj * qk) + (qi * qr)),   1 - (2 * (qi2 + qj2)),         0,
+        0,                             0,                             0,                             1
+    };
+
+    return rotation;
+}

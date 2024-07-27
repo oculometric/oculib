@@ -3,6 +3,11 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+OLMatrix4f OLCamera::getProjectionMatrix()
+{
+    return projectionMatrix(near_clip, far_clip, horizontal_fov, aspect_ratio);
+}
+
 OLMatrix4f OLCamera::projectionMatrix(float near_clip_plane, float far_clip_plane, float horizontal_fov_degrees, float aspect_ratio)
 {
     float clip_rat = -far_clip_plane / (far_clip_plane - near_clip_plane);
