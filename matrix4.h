@@ -71,6 +71,46 @@ struct OLMatrix4
     inline void operator/=(const T a) { x_0 /= a; y_0 /= a; z_0 /= a; w_0 /= a; x_1 /= a; y_1 /= a; z_1 /= a; w_1 /= a; x_2 /= a; y_2 /= a; z_2 /= a; w_2 /= a; x_3 /= a; y_3 /= a; z_3 /= a; w_3 /= a; }
     inline OLMatrix4<T> operator-() const { return OLMatrix4<T>{ x_0, x_1, x_2, x_3, y_0, y_1, y_2, y_3, z_0, z_1, z_2, z_3, w_0, w_1, w_2, w_3 }; }
     inline OLMatrix4<T> operator~() const { return adj(*this) / det(*this); }
+
+    inline void getColumnMajor(T* arr)
+    {
+        arr[0] = x_0;
+        arr[1] = x_1;
+        arr[2] = x_2;
+        arr[3] = x_3;
+        arr[4] = y_0;
+        arr[5] = y_1;
+        arr[6] = y_2;
+        arr[7] = y_3;
+        arr[8] = z_0;
+        arr[9] = z_1;
+        arr[10] = z_2;
+        arr[11] = z_3;
+        arr[12] = w_0;
+        arr[13] = w_1;
+        arr[14] = w_2;
+        arr[15] = w_3;
+    }
+
+    inline void getRowMajor(T* arr)
+    {
+        arr[0] = x_0;
+        arr[1] = y_0;
+        arr[2] = z_0;
+        arr[3] = w_0;
+        arr[4] = x_1;
+        arr[5] = y_1;
+        arr[6] = z_1;
+        arr[7] = w_1;
+        arr[8] = x_2;
+        arr[9] = y_2;
+        arr[10] = z_2;
+        arr[11] = w_2;
+        arr[12] = x_3;
+        arr[13] = y_3;
+        arr[14] = z_3;
+        arr[15] = w_3;
+    }
 };
 
 template <typename T>
