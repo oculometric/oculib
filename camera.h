@@ -29,7 +29,7 @@ public:
 		OLMatrix4f projection
 		{
 			s_x,     0.0f,       0.0f,       0.0f,
-			0.0f,    s_y,        0.0f,       0.0f,
+			0.0f,    -s_y,       0.0f,       0.0f,
 			0.0f,    0.0f,       clip_rat,   clip_rat * near_clip_plane,
 			0.0f,    0.0f,       -1.0f,      0.0f
 		};

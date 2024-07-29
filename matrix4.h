@@ -38,7 +38,7 @@ struct OLMatrix4
 
     constexpr OLMatrix4<T>(const OLMatrix4<T>& o) : x_0(o.x_0), y_0(o.y_0), z_0(o.z_0), w_0(o.w_0), x_1(o.x_1), y_1(o.y_1), z_1(o.z_1), w_1(o.w_1), x_2(o.x_2), y_2(o.y_2), z_2(o.z_2), w_2(o.w_2), x_3(o.x_3), y_3(o.y_3), z_3(o.z_3), w_3(o.w_3) { }
     constexpr OLMatrix4<T>(const T _x_0, const T _y_0, const T _z_0, const T _w_0, const T _x_1, const T _y_1, const T _z_1, const T _w_1, const T _x_2, const T _y_2, const T _z_2, const T _w_2, const T _x_3, const T _y_3, const T _z_3, const T _w_3) : x_0(_x_0), y_0(_y_0), z_0(_z_0), w_0(_w_0), x_1(_x_1), y_1(_y_1), z_1(_z_1), w_1(_w_1), x_2(_x_2), y_2(_y_2), z_2(_z_2), w_2(_w_2), x_3(_x_3), y_3(_y_3), z_3(_z_3), w_3(_w_3) { }
-    constexpr OLMatrix4<T>() : x_0(0), y_0(0), z_0(0), w_0(0), x_1(0), y_1(0), z_1(0), w_1(0), x_2(0), y_2(0), z_2(0), w_2(0), x_3(0), y_3(0), z_3(0), w_3(0) { }
+    constexpr OLMatrix4<T>() : x_0(1), y_0(0), z_0(0), w_0(0), x_1(0), y_1(1), z_1(0), w_1(0), x_2(0), y_2(0), z_2(1), w_2(0), x_3(0), y_3(0), z_3(0), w_3(1) { }
 
     inline OLVector4<T> col_0() const { return OLVector4<T>{ x_0, x_1, x_2, x_3 }; }
     inline OLVector4<T> col_1() const { return OLVector4<T>{ y_0, y_1, y_2, y_3 }; }
