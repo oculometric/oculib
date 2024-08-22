@@ -15,17 +15,17 @@ private:
 public:
     OLImage() = delete;
 
-    OLImage(size_t image_width, size_t image_height);
-    OLImage(size_t image_width, size_t image_height, void* image_data);
-    OLImage(string texture_file);
+    OLImage(size_t image_width, size_t image_height) { /* TODO: */ };
+    OLImage(size_t image_width, size_t image_height, void* image_data) { /* TODO: */ };
+    OLImage(string texture_file) { /* TODO: */ };
 
     OLImage(OLImage& other) = delete;
     OLImage(OLImage&& other) = delete;
     OLImage operator=(OLImage& other) = delete;
     OLImage operator=(OLImage&& other) = delete;
 
-    void* getData();
-    OLVector2<size_t> getSize();
+    inline void* getData() { return data; }
+    inline OLVector2<size_t> getSize() { return size; }
 
-    ~OLImage();
+    ~OLImage() { /* TODO: */ };
 };
