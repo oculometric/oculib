@@ -48,6 +48,9 @@ inline OLVector4<T> lerp(const OLVector4<T>& a, const OLVector4<T>& b, const T f
 template<typename T>
 inline std::ostream& operator<<(std::ostream& stream, const OLVector4<T>& v) { return stream << '(' << v.x << ", " << v.y << ", " << v.z << ", " << v.w << ')'; }
 
+template<typename T>
+inline std::string to_string(const OLVector4<T>& v) { return format("({:.3f},{:.3f},{:.3f},{:.3f})", v.x, v.y, v.z, v.w); }
+
 typedef OLVector4<float> OLVector4f;
 typedef OLVector4<int32_t> OLVector4i;
 typedef OLVector4<uint32_t> OLVector4u;
