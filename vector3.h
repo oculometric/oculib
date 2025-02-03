@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <iostream>
+#include <format>
 
 #define OL_RIGHT { 1,0,0 }
 #define OL_UP { 0,1,0 }
@@ -58,6 +59,9 @@ inline OLVector3<T> lerp(const OLVector3<T>& a, const OLVector3<T>& b, const T f
 
 template<typename T>
 inline std::ostream& operator<<(std::ostream& stream, const OLVector3<T>& v) { return stream << '(' << v.x << ", " << v.y << ", " << v.z << ')'; }
+
+template<typename T>
+inline std::string to_string(const OLVector3<T>& v) { return std::format("({:.3f},{:.3f},{:.3f})", v.x, v.y, v.z); }
 
 typedef OLVector3<float> OLVector3f;
 typedef OLVector3<int32_t> OLVector3i;
