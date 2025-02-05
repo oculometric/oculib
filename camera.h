@@ -27,7 +27,7 @@ public:
 	{
 		float clip_rat = -far_clip_plane / (far_clip_plane - near_clip_plane);
 		float s_x = 1.0f / tanf((horizontal_fov_degrees / 2.0f) * (M_PI / 180.0f));
-		float s_y = s_x / aspect_ratio;
+		float s_y = s_x * aspect_ratio;
 
 		OLMatrix4f projection
 		{
